@@ -1,3 +1,5 @@
+package tree;
+
 import java.util.Stack;
 
 /**
@@ -12,6 +14,7 @@ public class BinaryTree {
         root.leftChild = null;
         root.rightChild = null;
     }
+
 
     public String insert(int value) {
         String error = null;
@@ -47,14 +50,14 @@ public class BinaryTree {
         return error;
     }
 
-    public Node findKey(int value) {
+    public Node find(int value) {
         Node current = root;
         while (true) {
             if (value == current.value) {
                 return current;
             } else if (value < current.value) {
                 current = current.leftChild;
-            } else if (value > current.value) {
+            } else {
                 current = current.rightChild;
             }
 

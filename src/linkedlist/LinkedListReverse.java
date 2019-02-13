@@ -1,6 +1,7 @@
 package linkedlist;
 
 // 单链表反转
+//https://leetcode.com/problems/reverse-linked-list/
 public class LinkedListReverse {
 
 
@@ -10,7 +11,7 @@ public class LinkedListReverse {
         System.out.println("--------- before revert ");
         Node.print(node);
         System.out.println("--------- after revert ");
-//        Node reverseList = reverseListRecursive(node);
+//        tree.Node reverseList = reverseListRecursive(node);
         Node reverseList = revertList(node);
         Node.print(reverseList);
     }
@@ -32,17 +33,13 @@ public class LinkedListReverse {
     static Node revertList(Node node) {
         Node previous = null;
         Node current = node;
-        Node headNode = null;
         while (current != null) {
             Node nextNode = current.next;
-            if (nextNode == null) {
-                headNode = current;
-            }
             current.next = previous;
             previous = current;
             current = nextNode;
         }
-        return headNode;
+        return previous;
     }
 
 }

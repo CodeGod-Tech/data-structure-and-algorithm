@@ -3,6 +3,12 @@ package linkedlist;
 /**
  * 判断链表中是否有环，如有，则返回入口节点
  *
+ * 判断链表中是否有环：https://leetcode.com/problems/linked-list-cycle/
+ * 1.给定一段时间，如1s,遍历到最后，如果存在后继结点为null，则不存在环
+ * 2.使用set，判断是否有重复元素
+ * 3.快慢指针
+ *
+ * https://leetcode.com/problems/linked-list-cycle-ii/
  * 解决思路：
  * 1、定义慢指针和快指针，慢指针每次移动1步，快指针每次移动两步，如果有环，必定会相遇，而且在慢指针走完环之前相遇,
  *    因为快指针比慢指针快2倍，如果慢指针走完了环，那么快指针已经走了两次环
