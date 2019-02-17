@@ -11,7 +11,7 @@ public class LinkedListReverse {
         System.out.println("--------- before revert ");
         Node.print(node);
         System.out.println("--------- after revert ");
-//        tree.Node reverseList = reverseListRecursive(node);
+//        tree.TreeNode reverseList = reverseListRecursive(node);
         Node reverseList = revertList(node);
         Node.print(reverseList);
     }

@@ -7,58 +7,58 @@ import java.util.Stack;
  * http://blog.csdn.net/fengrunche/article/details/52305748
  */
 public class BinaryTree {
-    private Node root = null;
+    private TreeNode root = null;
 
     BinaryTree(int value) {
-        root = new Node(value);
-        root.leftChild = null;
-        root.rightChild = null;
+        root = new TreeNode(value);
+        root.left = null;
+        root.right = null;
     }
 
 
     public String insert(int value) {
         String error = null;
 
-        Node node = new Node(value);
+        TreeNode node = new TreeNode(value);
         if (root == null) {
             root = node;
-            root.leftChild = null;
-            root.rightChild = null;
+            root.left = null;
+            root.right = null;
         } else {
-            Node current = root;
-            Node parent = null;
+            TreeNode current = root;
+            TreeNode parent = null;
             while (true) {
-                if (value < current.value) {
+                if (value < current.val) {
                     parent = current;
-                    current = current.leftChild;
+                    current = current.left;
                     if (current == null) {
-                        parent.leftChild = node;
+                        parent.left = node;
                         break;
                     }
-                } else if (value > current.value) {
+                } else if (value > current.val) {
                     parent = current;
-                    current = current.rightChild;
+                    current = current.right;
                     if (current == null) {
-                        parent.rightChild = node;
+                        parent.right = node;
                         break;
                     }
                 } else {
-                    error = "having same value in binary tree";
+                    error = "having same val in binary tree";
                 }
             } // end of while
         }
         return error;
     }
 
-    public Node find(int value) {
-        Node current = root;
+    public TreeNode find(int value) {
+        TreeNode current = root;
         while (true) {
-            if (value == current.value) {
+            if (value == current.val) {
                 return current;
-            } else if (value < current.value) {
-                current = current.leftChild;
+            } else if (value < current.val) {
+                current = current.left;
             } else {
-                current = current.rightChild;
+                current = current.right;
             }
 
             if (current == null) {
@@ -79,13 +79,13 @@ public class BinaryTree {
         System.out.println();
     }
 
-    private void inOrderTraverse(Node node) {
+    private void inOrderTraverse(TreeNode node) {
         if (node == null)
             return ;
 
-        inOrderTraverse(node.leftChild);
+        inOrderTraverse(node.left);
         node.display();
-        inOrderTraverse(node.rightChild);
+        inOrderTraverse(node.right);
     }
 
 
@@ -101,13 +101,13 @@ public class BinaryTree {
         System.out.println();
     }
 
-    private void preOrderTraverse(Node node) {
+    private void preOrderTraverse(TreeNode node) {
         if (node == null)
             return ;
 
         node.display();
-        preOrderTraverse(node.leftChild);
-        preOrderTraverse(node.rightChild);
+        preOrderTraverse(node.left);
+        preOrderTraverse(node.right);
     }
 
 
@@ -123,12 +123,12 @@ public class BinaryTree {
         System.out.println();
     }
 
-    private void postOrderTraverse(Node node) {
+    private void postOrderTraverse(TreeNode node) {
         if (node == null)
             return ;
 
-        postOrderTraverse(node.leftChild);
-        postOrderTraverse(node.rightChild);
+        postOrderTraverse(node.left);
+        postOrderTraverse(node.right);
         node.display();
     }
 
@@ -140,18 +140,18 @@ public class BinaryTree {
      */
     public void inOrderByStack() {
         System.out.print("中序非递归遍历:");
-        Stack<Node> stack = new Stack<Node>();
-        Node current = root;
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        TreeNode current = root;
         while (current != null || !stack.isEmpty()) {
             while (current != null) {
                 stack.push(current);
-                current = current.leftChild;
+                current = current.left;
             }
 
             if (!stack.isEmpty()) {
                 current = stack.pop();
                 current.display();
-                current = current.rightChild;
+                current = current.right;
             }
         }
         System.out.println();
